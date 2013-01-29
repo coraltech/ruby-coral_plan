@@ -2,8 +2,14 @@
 module Coral
 module Plan
 
+#*******************************************************************************
+# Errors
+
 class ExecuteError < StandardError 
 end
+
+#*******************************************************************************
+# Base Plan definition
 
 class Base < Memory
 
