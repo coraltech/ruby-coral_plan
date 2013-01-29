@@ -25,7 +25,6 @@ end
 
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.version               = Coral::Plan::VERSION
   gem.name                  = "coral_plan"
   gem.homepage              = "http://github.com/coraltech/ruby-coral_plan"
   gem.rubyforge_project     = 'coral_plan'
