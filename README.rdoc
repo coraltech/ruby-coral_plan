@@ -1,0 +1,48 @@
+= coral_plan
+
+This library provides the ability to create, load, execute, and save 
+execution plans.
+
+The Coral Plan library contains a system that defines execution plans of 
+CLI commands.  The goal is to make it easy to create, edit, load, execute,
+and save these plans in a machine readable format (ie; JSON).  The system 
+is composed of Events, Commands, Actions, and of course Plans. There are a
+few simple rules:
+    
+1. All plans begin with a Command but may have more Commands defined
+   that act in sequence unless there are errors with previous commands.
+    
+2. Commands can trigger Events of various types, where Events are reading
+   and checking (ie; Regular expressions) Command output line by line.
+       
+3. Events have different criteria for measuring success and will have 
+   different fields.  For example, a Regexp event contains a 'pattern'
+   field.
+       
+4. Actions listen for Events and run Commands, with the ability to override
+   default Command parameters.  Actions may also generate Events on either
+   successful execution or failure which can trigger other Actions.
+       
+Note:  This library is still very early in development!
+
+== Contributing to coral_plan
+ 
+* Check out the latest master to make sure the feature hasn't been implemented 
+  or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested 
+  it and/or contributed it.
+* Fork the project.
+* Start a feature/bugfix branch.
+* Commit and push until you are happy with your contribution.
+* Make sure to add tests for it. This is important so I don't break it in a 
+  future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want 
+  to have your own version, or is otherwise necessary, that is fine, but 
+  please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Licensed under GPLv3.  See LICENSE.txt for further details.
+
+Copyright (c) 2013  Adrian Webb <adrian.webb@coraltech.net>
+Coral Technology Group LLC
