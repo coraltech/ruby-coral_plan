@@ -24,11 +24,14 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "coral_plan.gemspec",
     "lib/coral_plan.rb",
     "lib/coral_plan/action.rb",
     "lib/coral_plan/base.rb",
     "lib/coral_plan/command.rb",
-    "lib/coral_plan/event.rb"
+    "lib/coral_plan/event.rb",
+    "spec/coral_test_kernel.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/coraltech/ruby-coral_plan"
   s.licenses = ["GPLv3"]
