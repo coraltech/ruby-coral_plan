@@ -47,14 +47,21 @@ class Base < Memory
   #-----------------------------------------------------------------------------
   
   def initialize(options = {})
-    super(options)
+    autoload = ( options.has_key?(:autoload) ? options[:autoload] : true )
     
-    @home = ( options.has_key?(:home) && options[:home].is_a?(Coral::Repository) ? options[:home] : self )  
-        
+    options[:autoload] = false
+    super(options)
+    @autoload = autoload
+    
+    self.home = ( options.has_key?(:home) && options[:home].is_a?(Coral::Repository) ? options[:home] : self )
+           
     @start_commands = []
     @commands       = {}
     @events         = {}
     @actions        = {}
+    
+    set_absolute_config_file
+    load if @autoload
   end
     
   #-----------------------------------------------------------------------------
@@ -83,7 +90,7 @@ class Base < Memory
     if reset || @start_commands.empty?
       @start_commands = []
       get('start', [], :array).each do |name|
-        @start_commands << commands[name]
+        @start_commands << @commands[name]
       end
     end
     return @start_commands
@@ -211,7 +218,18 @@ class Base < Memory
   def delete_action(name, key = nil)
     return delete_group('actions', name, key)
   end
-  
+         
+  #-----------------------------------------------------------------------------
+  # Configuration loading / saving
+    
+  def load
+    super()
+    commands(true)
+    events(true)
+    actions(true)
+    return self
+  end
+ 
   #-----------------------------------------------------------------------------
   # Execution
   
